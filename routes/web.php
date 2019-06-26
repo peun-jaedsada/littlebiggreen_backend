@@ -15,7 +15,12 @@
 //     return view('welcome');
 // });
 
-
+Route::get('mail',function(){
+    $data = \Mail::send('welcome', ['key' => 'value'], function($message)
+    {
+        $message->to('jaedsada.ch@gmail.com', 'John Smith')->subject('Welcome!');
+    });
+});
 Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show')->middleware('auth');
 Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload')->middleware('auth');
 
