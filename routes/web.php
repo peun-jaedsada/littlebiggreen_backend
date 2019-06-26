@@ -15,15 +15,29 @@
 //     return view('welcome');
 // });
 
-Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
-Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+
+Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show')->middleware('auth');
+Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload')->middleware('auth');
 
 Route::post('customer','Backend\CustomerController@store');
 Route::post('contact','Backend\ContactController@store');
+Route::get('logout',function(){
+    Auth::logout();
+    return redirect()->route('login');
+})->name('auth.logout');
 
 Route::group(['prefix' => 'admin'],function(){
+    Auth::routes();
+    Route::get('dashboard',function(){
+        return view('backend.welcome');
+    })->name('customer.index');
     Route::get('customer','Backend\CustomerController@index')->name('customer.index');
     Route::get('contact','Backend\ContactController@index')->name('contact.index');
-    include_once(__DIR__.'/backend/index.php');
+    Route::middleware(['auth'])->group(function () {
+        include_once(__DIR__.'/backend/index.php');
+    });
 });
 
+
+
+Route::get('/home', 'HomeController@index')->name('home');
