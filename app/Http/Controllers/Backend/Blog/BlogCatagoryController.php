@@ -33,4 +33,9 @@ class BlogCatagoryController extends Controller
         $this->updateBlogCatagory($id,$this->getRequest($request,['_token']));
         return redirect()->route('blog_catagory.index');
     }
+
+    public function destroy( $id,Request $request ){
+        $this->destroyBlogCatagory($id);
+        return redirect()->route('blog_catagory.index');
+    }
 }

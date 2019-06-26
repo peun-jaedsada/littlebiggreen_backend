@@ -206,6 +206,14 @@
             };
             CKEDITOR.replace('my-editor', options);
         </script>
+        <script>
+            function deleteModal( id ){
+                $("#delete_modal").modal();
+            }
+            function submitDelete( id ){
+                $(`form#deleteSave${id}`).submit();
+            }
+        </script>   
         @stack('js')
     </body>
 </html>

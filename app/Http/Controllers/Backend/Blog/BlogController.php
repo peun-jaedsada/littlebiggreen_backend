@@ -34,5 +34,10 @@ class BlogController extends Controller
         $this->updateBlog($id,$this->getRequest($request,['_token']));
         return redirect()->route('blog.index');
     }
+    
+    public function destroy( $id ){
+        $this->destroyBlog($id);
+        return redirect()->route('blog.index');
+    }
 }
 

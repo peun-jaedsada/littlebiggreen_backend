@@ -33,5 +33,9 @@ class BannerController extends Controller
         $this->updateBanner($id,$this->getRequest($request,['_token']));
         return redirect()->route('banner.index');
     }
+    public function destroy( $id ){
+        $this->destroyBanner($id);
+        return redirect()->route('banner.index');
+    }
 
 }

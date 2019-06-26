@@ -1,26 +1,33 @@
 <?php
 
-namespace App\Services\Blog;
-use App\Model\Blog\BlogCatagory;
+namespace App\Services\Media;
+use App\Model\VideoContent;
+use App\Services\SubstrLinkService;
 
-Trait BlogCatagoryService
+Trait VideoService
 {
-    function __construct( BlogCatagory $model ) {
+    use SubstrLinkService;
+
+    function __construct( VideoContent $model ) {
         $this->model = $model;
     }
     function getAll(){
         return $this->model->get();
     }
+    
     function getEdit( $id ){
         $data['datas']              = $this->model->find($id);
+        $data['catagories']         = \App\Model\Blog\BlogCatagory::all();
         return $data;
     }
 
-    function addBlogCatagory( $request ){
+    function addVideo( $request ){
+        $request['youtube_key']         = $this->parseGetKey($request['youtube_link']);
+        $request['youtube_thumbnail']   = $this->parseGetThumbnail($request['youtube_key']);
         isset($request['status']) ? $request['status'] = 1 : $request['status'] = 0;
         \DB::begintransaction();
         try{
-            $BlogCatagory = $this->model->create($request)->id;
+            $Blog = $this->model->create($request)->id;
             \DB::commit();
         }catch( \Exception $e ){
             \DB::rollback();
@@ -30,11 +37,15 @@ Trait BlogCatagoryService
         return true;
     }
 
-    function updateBlogCatagory( $id,$request ){
+    function updateVideo( $id,$request ){
+        $request['youtube_key']         = $this->parseGetKey($request['youtube_link']);
+        $request['youtube_thumbnail']   = $this->parseGetThumbnail($request['youtube_key']);
         isset($request['status']) ? $request['status'] = 1 : $request['status'] = 0;
+
         \DB::begintransaction();
+
         try{
-            $BlogCatagory = $this->model->find($id)->update($request);
+            $Blog = $this->model->find($id)->update($request);
             \DB::commit();
 
         }catch( \Exception $e ){
@@ -45,7 +56,7 @@ Trait BlogCatagoryService
         return true;
     }
 
-    function destroyBlogCatagory ( $id ){
+    function destroyBlog ( $id ){
         $this->model->find($id)->delete($id);
         return true;
     }

@@ -35,6 +35,8 @@
                         <td><img height="200px" src="{{ asset('upload_img/banner/'.$item->banner_img) }}" alt=""> </td>
                         <td>
                             <a href="{{ route('banner.edit',$item->id) }}" class="btn btn-sm btn-warning waves-effect waves-light"><i class="fe-edit"></i></a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#deleteModal{{$item->id}}" class="btn btn-sm btn-danger waves-effect waves-light" onclick="deleteModal({{$item->id}})"><i class="fe-trash"></i></a>
+                            @include('backend._module.modaldelete',['modal'=>'deleteModal'.$item->id,'modal_id'=>$item->id,'modal_title'=>$item->banner_title ,'url_delete'=>route('banner.destroy',$item->id)])
                         </td>
                     </tr>
                 @empty

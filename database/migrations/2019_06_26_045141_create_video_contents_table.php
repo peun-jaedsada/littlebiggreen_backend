@@ -15,12 +15,13 @@ class CreateVideoContentsTable extends Migration
     {
         Schema::create('video_contents', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('youtube_link');
             $table->string('youtube_key');
             $table->text('youtube_thumbnail');
             $table->date('publish_date');
             $table->string('seo_id');
             $table->string('seo_title');
-            $table->text('seo_description');
+            // $table->text('seo_description');
             $table->string('title');
             $table->string('description');
             $table->integer('status');

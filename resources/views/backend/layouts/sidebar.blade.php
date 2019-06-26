@@ -26,6 +26,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('video.index') }}">
+                        <i class="fe-layers"></i>
+                        <span> Video Management </span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('activity.index') }}">
                         <i class="fe-layers"></i>
                         <span> Activity Management </span>

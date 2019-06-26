@@ -11,6 +11,11 @@ Trait SubstrLinkService
         return $vars['v'];
     }
 
+    public function parseGetThumbnail( $key ){
+        $thumbnail = 'https://img.youtube.com/vi/'.$key.'/maxresdefault.jpg';
+        return $thumbnail;
+    }
+    
     // public function upload($folder, $filename,$moveto)
     // {
     //     $name = !is_null($filename) ? $filename : str_random(25);

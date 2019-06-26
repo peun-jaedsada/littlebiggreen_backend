@@ -37,6 +37,8 @@
                         <td>{{ $item->status == 1 ? 'Active' : 'InActive' }}</td>
                         <td>
                             <a href="{{ route('activity.edit',$item->id) }}" class="btn btn-sm btn-warning waves-effect waves-light"><i class="fe-edit"></i></a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#deleteModal{{$item->id}}" class="btn btn-sm btn-danger waves-effect waves-light" onclick="deleteModal({{$item->id}})"><i class="fe-trash"></i></a>
+                            @include('backend._module.modaldelete',['modal'=>'deleteModal'.$item->id,'modal_id'=>$item->id,'modal_title'=>$item->title ,'url_delete'=>route('activity.destroy',$item->id)])
                         </td>
                     </tr>
                 @empty

@@ -33,5 +33,10 @@ class ActivityController extends Controller
         $this->updateActivity($id,$this->getRequest($request,['_token']));
         return redirect()->route('activity.index');
     }
+
+    public function destroy( $id,Request $request ){
+        $this->destroyActivity($id);
+        return redirect()->route('activity.index');
+    }
 }
 
