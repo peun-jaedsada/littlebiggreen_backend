@@ -20,7 +20,7 @@
             {{-- @include('backend._module.input.textarea',['input_name'=> 'seo_title','input_label'=>'SEO Description']) --}}
             <hr>
             @include('backend._module.input.text',['input_name'=> 'title','input_label'=>'Title'])
-            @include('backend._module.input.text_editor',['input_name'=> 'description','input_label'=>'Description'])
+            @include('backend._module.input.textarea',['input_name'=> 'description','input_label'=>'Description'])
             @include('backend._module.input.datetime',['input_name'=> 'publish_date','input_label'=>'Publish Date'])
             @include('backend._module.input.checkbox_single',['input_name'=> 'status','input_label'=>'Active','input_id'=>'status_id'])
             @include('backend._module.btn.submit',['btn_label'=>'Save','class'=>'btn-success'])

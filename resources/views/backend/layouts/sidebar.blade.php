@@ -14,6 +14,23 @@
                     </a>
                 </li>
                 <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-layers"></i>
+                        <span class="menu-arrow"></span>
+                        <span> Banner Management </span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        @if(\App\Model\Banner\Banner::all()->count() != 0)
+                            @foreach (\App\Model\Banner\Banner::all() as $item)
+                                <li>
+                                    <a href="{{ route('banner.edit',$item->id) }}">{{$item->banner_name}}</a>
+                                </li>
+                            @endforeach
+                        @endif
+                        
+                    </ul>
+                </li>
+                <li>
                     <a href="{{ route('customer.index') }}">
                         <i class="fe-layers"></i>
                         <span> Customer </span>

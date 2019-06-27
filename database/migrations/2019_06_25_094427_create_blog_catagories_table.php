@@ -18,6 +18,7 @@ class CreateBlogCatagoriesTable extends Migration
             $table->string('name');
             $table->string('alias_name');
             $table->text('color');
+            $table->integer('blog_highlight');
             $table->integer('status');
             $table->timestamps();
         });

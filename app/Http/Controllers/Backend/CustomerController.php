@@ -23,9 +23,10 @@ class CustomerController extends Controller
     }
 
     public function store( Request $request ){
-        $data = Customer::create($request);
+        $data = Customer::create($this->getRequest($request,['_token']));
 
-        return response()->json(['status'=>200,'info'=>'success']);
+        // return response()->json(['status'=>200,'info'=>'success']);
+        return back()->with('message', 'Save Success');
     }
 
 }

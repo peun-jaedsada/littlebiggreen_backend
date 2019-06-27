@@ -11,6 +11,7 @@ class BlogCatagory extends Model
         'name',
         'alias_name',
         'status',
-        'color'
+        'color',
+        'blog_highlight'
     ];
 }

@@ -24,7 +24,7 @@ Route::get('mail',function(){
 Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show')->middleware('auth');
 Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload')->middleware('auth');
 
-Route::post('customer','Backend\CustomerController@store');
+Route::post('customer','Backend\CustomerController@store')->name('customer.save');
 Route::post('contact','Backend\ContactController@store');
 Route::get('logout',function(){
     Auth::logout();
@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin'],function(){
     });
 });
 
+include_once(__DIR__.'/frontend/index.php');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

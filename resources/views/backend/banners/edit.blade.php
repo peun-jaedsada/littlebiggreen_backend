@@ -15,6 +15,7 @@
         <form class="form-horizontal" action="{{ route('banner.update',$datas->id) }}" method="POST" enctype='multipart/form-data'>
             @csrf
             @method('put')
+            @include('backend._module.input.text',['input_name'=> 'banner_name','input_label'=>'Banner Name'])
             @include('backend._module.input.text',['input_name'=> 'banner_title','input_label'=>'Banner Title'])
             @include('backend._module.input.text',['input_name'=> 'banner_id','input_label'=>'Banner Picture Id'])
             @include('backend._module.input.text',['input_name'=> 'banner_alt','input_label'=>'Banner Picture Alt'])

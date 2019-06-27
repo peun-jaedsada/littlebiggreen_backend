@@ -31,7 +31,7 @@
                 @forelse ($datas as $key=> $item)
                     <tr class="">
                         <td>{{ $key+1 }}</td>
-                        <td>{{ $item->banner_title }}</td>
+                        <td>{{ $item->banner_name }}</td>
                         <td><img height="200px" src="{{ asset('upload_img/banner/'.$item->banner_img) }}" alt=""> </td>
                         <td>
                             <a href="{{ route('banner.edit',$item->id) }}" class="btn btn-sm btn-warning waves-effect waves-light"><i class="fe-edit"></i></a>
