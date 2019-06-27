@@ -15,8 +15,12 @@ class ContactController extends Controller
     }
 
     public function store( Request $request ){
-        $data = Contact::create($request);
 
-        return response()->json(['status'=>200,'info'=>'success']);
+        \Mail::send('email.contact', ['name'=>$request->name,'info'=>$request->message,'email'=>$request->email], function($message) use ($request){
+            $message->to($request->email, $request->name)->subject('Welcome!');
+        });
+        $data = Contact::create($this->getRequest($request,['_token']));
+
+        return back()->with('message', 'Save Success');
     }
 }

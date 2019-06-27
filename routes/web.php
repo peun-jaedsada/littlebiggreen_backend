@@ -14,18 +14,19 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+use Illuminate\Http\Request;
 
-Route::get('mail',function(){
-    $data = \Mail::send('welcome', ['key' => 'value'], function($message)
-    {
-        $message->to('jaedsada.ch@gmail.com', 'John Smith')->subject('Welcome!');
+
+Route::get('mail',function( Request $request ){
+    \Mail::send('email.contact', ['name'=>$request->name,'info'=>$request->message,'email'=>$request->email], function($message) use ($request){
+        $message->to($request->email, $request->name)->subject('Welcome!');
     });
 });
 Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show')->middleware('auth');
 Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload')->middleware('auth');
 
 Route::post('customer','Backend\CustomerController@store')->name('customer.save');
-Route::post('contact','Backend\ContactController@store');
+Route::post('contact','Backend\ContactController@store')->name('frontend.sendmail');
 Route::get('logout',function(){
     Auth::logout();
     return redirect()->route('login');

@@ -38,17 +38,18 @@
                     <div><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
                     <div>littlebiggreen@theflight19.com</div>
                 </div>
-                <form class="form-contact" action="/action_page.php">
+                <form class="form-contact" action="{{ route('frontend.sendmail') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input type="text" class="form-control contact-input" placeholder="Name">
+                            <input type="text" class="form-control contact-input" name="name" placeholder="Name">
                         </div>
                         <div class="form-group col-md-6">
-                            <input type="mail" class="form-control contact-input" placeholder="Mail">
+                            <input type="mail" class="form-control contact-input" name="email" placeholder="Mail">
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control contact-input" name="Message" id="Message" rows="5" placeholder="BOX"></textarea>
+                        <textarea class="form-control contact-input" name="message" id="Message" rows="5" placeholder="BOX"></textarea>
                         <!-- <input type="text" class="form-control contact-input" placeholder="Message"> -->
                     </div>
                     

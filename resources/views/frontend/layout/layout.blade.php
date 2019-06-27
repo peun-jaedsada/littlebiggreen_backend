@@ -66,15 +66,15 @@
                 <li class="nav-item nav-menu-item">
                   <a class="nav-link nav-color {{ (request()->is('video')) ? 'active' : '' }}" id="videoTopNavLink" title="little big green คืออะไร" href="{{url('video')}}">VDO</a>
                 </li>
-                <li class="nav-item nav-menu-item">
+                {{-- <li class="nav-item nav-menu-item">
                   <a class="nav-link nav-color {{ (request()->is('activities')) ? 'active' : '' }}" id="activitiesTopNavLink" title="กิจกรรม งานอีเว้นท์ ของ little big green" href="{{url('activities')}}">Activities</a>
-                </li>  
+                </li>   --}}
                 <li class="nav-item nav-menu-item">
                   <a class="nav-link nav-color {{ (request()->is('blog')) ? 'active' : '' }}" id="blogTopNavLink" title="บทความของ little big green" href="{{url('blog')}}">Blog</a>
                 </li>  
-                <li class="nav-item nav-menu-item">
+                {{-- <li class="nav-item nav-menu-item">
                   <a class="nav-link nav-color" href="#" id="bigGreenFriendTopNavLink" title="Big Green Friend - Marketplace สำหรับคนกรีนๆ">Big Green Friend</a>
-                </li>  
+                </li>   --}}
                 <li class="nav-item nav-menu-item">
                   <a class="nav-link nav-color {{ (request()->is('contact')) ? 'active' : '' }}" id="contactTopNavLink" title="ติดต่อและพูดคุยกับเรา little big green" href="{{url('contact')}}">Contact</a>
                 </li>      
