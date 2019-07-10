@@ -13,7 +13,7 @@
             <div class="badge-being">
             <span class="badge green-light">{{ $blog->cat_alias_name }}</span> <div class="badge-line"></div> <span class="d-baswline"> {{ $blog->cat_name }}</span>
             </div>
-            <a href="{{ route('frontend.blog.show',$blog->id) }}">
+            <a href="{{ route('frontend.blog.show',$cuturl($blog->blog_title)) }}">
                 <b>{{ $blog->blog_title }}</b>
             </a>
         </div>
@@ -44,9 +44,9 @@
                             <div class="badge-being">
                                 <span class="badge red-light">{{$item->cat_alias_name}}</span> <div class="badge-line"></div> <span class="d-baswline"> {{$item->cat_name}}</span>
                             </div>
-                            <a class="home-card-title" href="{{url('blog_detail')}}">{{ $item->blog_title }}</a>
+                            <a class="home-card-title" href="{{route('frontend.blog.show',$cuturl($item->blog_title))}}">{{ $item->blog_title }}</a>
                             <p class="home-ex-text">{{ $item->blog_sub_title }}</p>
-                            <a href="{{route('frontend.blog.show',$item->id)}}" class="btn home-read-more">read more</a>
+                            <a href="{{route('frontend.blog.show',$cuturl($item->blog_title))}}" class="btn home-read-more">read more</a>
                             </div>
                         </div>
                     </div>
@@ -68,6 +68,15 @@
 
     <!-- Script -->
     @push('js')
+    <script>
+            jQuery('.iframed-video').colorbox({
+                width: 710,
+                height: 520,
+                maxWidth: '95%',
+                maxHeight: '95%',
+                iframe: true,
+            });
+            </script>
     @endpush
     <!-- END Script -->
 <!-- END Banner -->

@@ -49,6 +49,7 @@
             @include('backend._module.input.uploadfile',['input_name'=> 'blog_picture_sm','input_label'=>'Blog Picture Mobile','url_picture'=>asset('upload_img/blog/'.$datas->blog_picture_sm)])
             @include('backend._module.input.checkbox_single',['input_name'=> 'blog_highlight','input_label'=>'Blog Hightlight','input_id'=>'status_id1','check'=>1,'check_val'=>$datas->blog_highlight])
             <hr>
+            @include('backend._module.input.text',['input_name'=> 'blog_rewrite','input_label'=>'Blog Rewrite Url'])
             @include('backend._module.input.checkbox_single',['input_name'=> 'status','input_label'=>'Active','input_id'=>'status_id','check'=>1,'check_val'=>$datas->status])
             @include('backend._module.btn.submit',['btn_label'=>'Save','class'=>'btn-success'])
         </form>

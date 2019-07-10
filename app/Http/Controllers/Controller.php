@@ -31,12 +31,11 @@ class Controller extends BaseController
         return $data['blog'];
     }
 
-    public function getOneBlog($id){
+    public function getOneBlog($title){
         $data['blogs'] = \App\Model\Blog\Blog::select('blogs.*','blog_catagories.name as cat_name','blog_catagories.alias_name as cat_alias_name','blog_catagories.color as cat_color')->leftjoin('blog_catagories','blog_catagories.id','blogs.catagory_id')
-        ->where('blogs.id',$id)
-        ->whereNull('blogs.blog_highlight')
-        ->Orwhere('blogs.blog_highlight','!=',1)
+        ->where('blogs.blog_title','LIKE','%'.$title.'%')
         ->first();
+        
         return $data['blogs'];
     }
 

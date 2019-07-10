@@ -24,5 +24,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        \View::share('cuturl',function( $title ){
+            $titles = preg_replace('![^ก-๙\pL\pN\s]+!u', '', $title);
+            return preg_replace('/\s/', '-', $titles);
+        });
     }
 }

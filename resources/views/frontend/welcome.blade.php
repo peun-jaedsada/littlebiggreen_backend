@@ -26,10 +26,11 @@
       <img class="w-100 d-md-none" src="{{ asset('upload_img/banner/'.$banner->banner_img_sm) }}" alt="{{ $banner->banner_alt }}">
     </a>
   </section>
+  <iframe width="1280" height="720" src="https://www.youtube.com/embed/CBIC6azDopY?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <div class="modal fade" id="BannerYoutube">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <iframe width="1280" height="720" src="https://www.youtube.com/embed/{{isset($key) ? $key : ''}}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/{{isset($key) ? $key : ''}}?autoplay=1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>

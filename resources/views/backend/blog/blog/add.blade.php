@@ -49,6 +49,7 @@
             @include('backend._module.input.checkbox_single',['input_name'=> 'blog_highlight','input_label'=>'Blog Hightlight','input_id'=>'status_id1'])
             
             <hr>
+            @include('backend._module.input.text',['input_name'=> 'blog_rewrite','input_label'=>'Blog Rewrite Url'])
             @include('backend._module.input.checkbox_single',['input_name'=> 'status','input_label'=>'Active','input_id'=>'status_id'])
             @include('backend._module.btn.submit',['btn_label'=>'Save','class'=>'btn-success'])
         </form>

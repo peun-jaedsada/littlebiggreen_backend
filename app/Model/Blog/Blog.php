@@ -24,6 +24,7 @@ class Blog extends Model
         'blog_picture_id_thumbnail',
         'blog_picture_thumbnail',
         'blog_description',
-        'status'
+        'status',
+        'blog_rewrite'
     ];
 }

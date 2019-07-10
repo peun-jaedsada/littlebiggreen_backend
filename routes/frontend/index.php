@@ -13,7 +13,7 @@
 use Illuminate\Http\Request;
 Route::get('/', 'Frontend\WelcomeController@index');
 Route::get('/blog', 'Frontend\BlogController@index')->name('frontend.blog.index');
-Route::get('/blog/{id}', 'Frontend\BlogController@show')->name('frontend.blog.show');
+Route::get('/blog/{title}', 'Frontend\BlogController@show')->name('frontend.blog.show');
 Route::get('/video', 'Frontend\VideoController@index')->name('frontend.video.index');
 // Route::get('blog', function () {
 //     return view('frontend.blog');

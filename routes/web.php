@@ -16,6 +16,7 @@
 // });
 use Illuminate\Http\Request;
 
+Route::get('welcome','HomeController@index');
 
 Route::get('mail',function( Request $request ){
     \Mail::send('email.contact', ['name'=>$request->name,'info'=>$request->message,'email'=>$request->email], function($message) use ($request){
@@ -31,12 +32,19 @@ Route::get('logout',function(){
     Auth::logout();
     return redirect()->route('login');
 })->name('auth.logout');
+Auth::routes();
+Route::get('admin',function(){
+    if( \Auth::user() ){
+        return redirect()->route('dashboard');
+    }else{
+        return redirect()->route('login');
+    }
+})->middleware('auth');
 
 Route::group(['prefix' => 'admin'],function(){
-    Auth::routes();
     Route::get('dashboard',function(){
         return view('backend.welcome');
-    })->name('customer.index');
+    })->name('dashboard');
     Route::get('customer','Backend\CustomerController@index')->name('customer.index');
     Route::get('contact','Backend\ContactController@index')->name('contact.index');
     Route::middleware(['auth'])->group(function () {

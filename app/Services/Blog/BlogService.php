@@ -20,11 +20,17 @@ Trait BlogService
         return $data;
     }
 
-    function addBlog( $request ){
-        $request['blog_picture']        = $this->uploadOne($request['blog_picture'],'blog','logo');
-        $request['blog_picture_thumbnail']        = $this->uploadOne($request['blog_picture_thumbnail'],'blog','logo');
-        $request['blog_picture_sm']     = $this->uploadOne($request['blog_picture_sm'],'blog','logo');
+    function preg( $title ){
+        $titles = preg_replace('![^ก-๙\pL\pN\s]+!u', '', $title);
+        $titless = preg_replace('/\s/', '-', $titles);
+        return $titless;
+    }
 
+    function addBlog( $request ){
+        $request['blog_picture']            = $this->uploadOne($request['blog_picture'],'blog','logo');
+        $request['blog_picture_thumbnail']  = $this->uploadOne($request['blog_picture_thumbnail'],'blog','logo');
+        $request['blog_picture_sm']         = $this->uploadOne($request['blog_picture_sm'],'blog','logo');
+        isset($request['blog_rewrite']) ? $request['blog_rewrite'] = $request['blog_rewrite'] :$request['blog_rewrite'] = $this->preg($request['blog_title']);
         isset($request['status']) ? $request['status'] = 1 : $request['status'] = 0;
         
         \DB::begintransaction();
@@ -49,7 +55,8 @@ Trait BlogService
         if(isset($request['blog_picture_thumbnail'])){
             $request['blog_picture_thumbnail']        = $this->uploadOne($request['blog_picture_thumbnail'],'blog','logo');
         }
-
+        isset($request['blog_rewrite']) ? $request['blog_rewrite'] = $request['blog_rewrite'] :$request['blog_rewrite'] = $this->preg($request['blog_title']);
+        
         isset($request['status']) ? $request['status'] = 1 : $request['status'] = 0;
         \DB::begintransaction();
 
